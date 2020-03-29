@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- scope决定Spring创建的Bean对象是否是单例模式
+     singleton 单例
+     prototype 多例
+     -->
+
+    <bean id="testServiceImpl" scope="singleton" class="com.bj.spring.service.Impl.TestServiceImpl">
+
+        <property name="strArray">
+            <array>
+                <value>张三</value>
+                <value>李四</value>
+                <value>王五</value>
+                <value>赵六</value>
+            </array>
+        </property>
+
+        <property name="studentList">
+            <list>
+                <ref bean="student01"></ref>
+                <ref bean="student02"></ref>
+                <bean class="com.bj.spring.model.Student">
+                    <property name="id" value="3"></property>
+                    <property name="name" value="王五"></property>
+                </bean>
+            </list>
+        </property>
+
+        <property name="studentSet">
+            <set>
+                <ref bean="student01"></ref>
+                <ref bean="student02"></ref>
+                <ref bean="student02"></ref>
+            </set>
+        </property>
+
+        <property name="studentMap">
+            <map>
+                <entry key="stu01" value-ref="student01"></entry>
+                <entry key="stu02" value-ref="student02"></entry>
+            </map>
+        </property>
+
+        <!-- 注入数据到properties对象中  properties对象是hashtable的子类 但是properties中的所有key和value都是字符串类型 -->
+
+        <property name="properties">
+            <props>
+                <prop key="name">张三</prop>
+                <prop key="age">23</prop>
+            </props>
+        </property>
+
+    </bean>
+
+    <bean id="student01" class="com.bj.spring.model.Student">
+        <property name="id" value="1"></property>
+        <property name="name" value="张三"></property>
+    </bean>
+
+    <bean id="student02" class="com.bj.spring.model.Student">
+        <property name="id" value="2"></property>
+        <property name="name" value="李四"></property>
+    </bean>
+
+</beans>

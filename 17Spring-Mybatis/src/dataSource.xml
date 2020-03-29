@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">-->
+<!--        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>-->
+<!--        <property name="url" value="jdbc:mysql://localhost:3306/study"></property>-->
+
+<!--        <property name="username" value="root"></property>-->
+<!--        <property name="password" value="fan13467928"></property>-->
+
+<!--    </bean>-->
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"></property>
+        <property name="url" value="jdbc:postgresql://localhost:5432/shop"></property>
+        <property name="username" value="postgres"></property>
+        <property name="password" value="13467928"></property>
+    </bean>
+
+    <!-- 创建SqlSessionFactoryBean对象 他就是我们之前使用MyBatis的SqlSessionFactory对象 -->
+
+    <bean id="SqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 指定数据源 通知MyBatis去哪获取数据库的链接 -->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 配置MyBatis的包扫描器 通知MyBatis到哪目录下寻找SQL映射类 -->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="SqlSessionFactoryBean"></property>
+        <!-- 通知MyBatis带有MyBatis注解的接口在什么位置中 -->
+        <property name="basePackage" value="com.huawei.it.spring.dao"></property>
+    </bean>
+
+</beans>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 配置阿里巴巴数据库连接池 -->
+    <bean  id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/study"/>
+        <property name="user" value="root"/>
+        <property name="password" value="fan13467928"/>
+    </bean>
+    <!-- 创建SqlSessionFactoryBean对象 它就是我们之间使用MyBatis中的那个SqlSessionFactory对象-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!-- 指定数据源，通知MyBatis去哪获取数据库的链接-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--配置MyBatis的包扫描器，通知MyBatis到哪目录下寻找SQL映射类 -->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"/>
+        <!--通知MyBatis带有MyBatis注解的接口在什么位置中 -->
+        <property name="basePackage" value="com.bjpowernode.spring.dao"/>
+    </bean>
+</beans>

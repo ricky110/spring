@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置一个spring的bean标签，每一个Bean标签后期都是一个Java的对象
+    属性
+      id 表示这个bean的唯一标识在整个spring上下文容器中这个id都是唯一的，内容任意
+      class 表示这个bean所对应的类的全限定名
+    -->
+    <bean id="testService" class="com.bj.spring.service.Impl.TestServiceImpl">
+
+        <!-- 为TestServiceImpl 类中的testDao属性注入数据
+
+        name 为属性名
+        ref 为注入的数据内容，如果属性是一个应用类型那么需要使用ref来执行某个bean的id值来完成注入
+        spring会自动调用当前对象中的这个属性的set方法完成赋值
+
+     -->
+        <property name="testDao" ref="testDao"></property>
+    </bean>
+
+    <bean id="testDao" class="com.bj.spring.dao.impl.TestDaoImpl">
+
+    </bean>
+</beans>

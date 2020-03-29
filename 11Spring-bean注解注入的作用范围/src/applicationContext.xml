@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!-- 包扫描 使用context时必须在beans中引入context的命名空间
+         它会扫描指定报下的所有的类以及这个包下的所有子孙包中的类，到这些类中寻找Spring的注解
+         -->
+    <context:component-scan base-package="com.bj.spring.service.Impl,com.bj.spring.dao.impl"></context:component-scan>
+
+</beans>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper 表示映射的意思，这个标签的里面编写的全部都是我们的SQL语句
+    namespace 表示 一个命名空间 ，这个属性是可选属性但是却必须要填写 ，
+    内容任意，但是不能和其他的SQL映射文件的namespace相同
+ -->
+<mapper namespace="com.huawei.it.spring.dao.UserDao">
+
+    <insert id="insertUser">
+        insert into t_user (username,password,name,age) values (#{username},#{password},#{name},#{age})
+    </insert>
+
+
+</mapper>

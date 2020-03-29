@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- scope决定Spring创建的Bean对象是否是单例模式
+     singleton 单例
+     prototype 多例
+     -->
+
+    <bean id="testServiceImpl" scope="singleton" class="com.bj.spring.service.Impl.TestServiceImpl">
+
+    </bean>
+
+</beans>

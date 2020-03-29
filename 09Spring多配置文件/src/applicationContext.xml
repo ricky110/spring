@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--
+    import 引入某个spring的配置文件 引入后就相当于是将这个配置文件的内容在当前位置中重写一遍
+    注意：
+    classpath：表示当前项目编译后的根路径
+    classpath：spring-service.xml 表示将根路径下的spring-service.xml文件中的内容引入到当前文件中
+ -->
+    <import resource="classpath:spring-service.xml"></import>
+    <import resource="classpath:spring-dao.xml"></import>
+
+
+</beans>

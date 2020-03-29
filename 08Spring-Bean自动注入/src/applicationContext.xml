@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    autowire 表示要自动注入
+    取值
+    byName 为根据名字进行自动注入，Spring会根据当前类中的属性名到Spring上下文寻找与这个属性名相同的bean标签的id
+    如果找到则直接进行注入，如果没有找到不进行注入，如果这个bean的id值与属性名的类型不同则注入失败
+
+    byType 为根据类型进行自动注入
+
+    注意： 我们也可以在beans的标签中 添加 default-autowire属性，指定默认自动装配方式
+     -->
+
+    <bean id="testServiceImpl" autowire="byName" class="com.bj.spring.service.Impl.TestServiceImpl">
+
+
+    </bean>
+    <bean id="testDao" class="com.bj.spring.dao.impl.TestDaoImpl">
+
+    </bean>
+
+</beans>
